@@ -1,0 +1,23 @@
+<%= form_with model: @recipe, local: true do |form| %>
+
+    <%= form.label :name, "Name: " %>
+    <%= form.text_field :name %>
+
+    <%= form.label :cuisine, "Cuisine: " %>
+    <%= form.text_field :cuisine %>
+
+    <%= form.label :cooking_time, "Cooking Time: " %>
+    <%= form.number_field :cooking_time %><br><br>
+
+    <%= form.fields_for :ingredients do |inner_form| %>
+
+        <%= inner_form.label :ingredient, "Ingredient: " %>
+        <%= inner_form.text_field :name %>
+
+    <% end %>
+    <br><br>
+    <%= form.label :instructions, "Instructions: " %>
+    <%= form.text_area :instructions%><br><br>
+
+    <%= form.submit "Create New Recipe" %>
+<% end %>
